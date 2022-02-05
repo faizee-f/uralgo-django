@@ -12,9 +12,9 @@ class MyAccountManager(BaseUserManager):
             first_name=first_name,
             last_name=last_name,
         )
+        user.is_active = False
         user.set_password(password)
         user.save(using=self._db)
-        user.is_active = True
         return user
 
     def create_superuser(self, email, password, first_name, last_name):
@@ -61,3 +61,12 @@ class Account(AbstractBaseUser):
 
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
+
+
+class Person(models.Model):
+    account=models.OneToOneField(Account,on_delete=models.CASCADE)
+    dp=models.ImageField(upload_to='media/user/dp/')
+    points=models.IntegerField()
+    
+
+
