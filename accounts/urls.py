@@ -10,7 +10,6 @@ urlpatterns=[
     path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('verification/', include('verify_email.urls')),
-
     path('account_list/',AccountList.as_view(),name='account_list'),
     path('account_list/<int:pk>/',AccountDetail.as_view(),name='account_details'),
 ]
