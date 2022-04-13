@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('challenges', '0002_challenge_name'),
+        ("challenges", "0002_challenge_name"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='challenge',
-            old_name='cases',
-            new_name='caseInput',
+            model_name="challenge",
+            old_name="cases",
+            new_name="caseInput",
         ),
         migrations.AddField(
-            model_name='challenge',
-            name='caseOutput',
+            model_name="challenge",
+            name="caseOutput",
             field=models.JSONField(default=1),
             preserve_default=False,
         ),
