@@ -38,15 +38,19 @@ class Account(AbstractBaseUser):
     )
     first_name = models.CharField(max_length=60, blank=False)
     last_name = models.CharField(max_length=60, blank=False)
-    date_joined = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
-    last_login = models.DateTimeField(verbose_name="last login", auto_now_add=True)
+    date_joined = models.DateTimeField(
+        verbose_name="date joined", auto_now_add=True
+    )
+    last_login = models.DateTimeField(
+        verbose_name="last login", auto_now_add=True
+    )
     is_admin = models.BooleanField(default=False)
-    is_staff=models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_verified = models.BooleanField(default=False)
     password = models.CharField(max_length=100)
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ['first_name', 'last_name']
+    REQUIRED_FIELDS = ["first_name", "last_name"]
 
     objects = MyAccountManager()
 
@@ -64,9 +68,6 @@ class Account(AbstractBaseUser):
 
 
 class Person(models.Model):
-    account=models.OneToOneField(Account,on_delete=models.CASCADE)
-    dp=models.ImageField(upload_to='media/user/dp/')
-    points=models.IntegerField()
-    
-
-
+    account = models.OneToOneField(Account, on_delete=models.CASCADE)
+    dp = models.ImageField(upload_to="media/user/dp/")
+    points = models.IntegerField()

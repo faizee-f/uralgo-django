@@ -11,11 +11,11 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
         print(user)
         # Add custom claims
-        token['email'] = user.email
-        token['full_name'] = user.full_name()
-        token['is_admin'] = user.is_admin
-        token['is_active'] = user.is_active
-        token['is_staff'] = user.is_staff
+        token["email"] = user.email
+        token["full_name"] = user.full_name()
+        token["is_admin"] = user.is_admin
+        token["is_active"] = user.is_active
+        token["is_staff"] = user.is_staff
         # ...
 
         return token
@@ -29,7 +29,7 @@ class AccountSerializer(serializers.ModelSerializer):
             "first_name": {"required": True},
             "last_name": {"required": True},
             "email": {"required": True},
-            "password": {'write_only': True, 'required': True}
+            "password": {"write_only": True, "required": True},
         }
 
     # field level validation
@@ -51,7 +51,6 @@ class AccountSerializer(serializers.ModelSerializer):
             first_name=validated_data["first_name"],
             last_name=validated_data["last_name"],
             password=validated_data["password"],
-
         )
         user.set_password(validated_data["password"])
         user.save()
